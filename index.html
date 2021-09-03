@@ -2,121 +2,359 @@
 <html>
 
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        html,
-        body {
-            padding: 0px;
-            margin: 0px;
-            min-height: 100vh;
-            
-        }
-        #ITEM {
-            display: grid;
-            place-content: center;
-            padding: 10px;
-        }
-        #ITEM a{
-            display: inline-block;
-            padding: 10px;
-            text-decoration: none;
-            color: coral;
-            font-size: 32px;
-            background-color: #ff7f501f;
-            border-radius: 50%;
-            font-weight: bold;
-            text-align: center;
-            transition: .3s;
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
 
-        }
-        #ITEM a:hover{
-           transform: scale(1.5);
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
 
-        }
-        section {
-            min-height: 100vh;
-            display: grid;
-            gap: 20px;
-            grid-template-columns: auto auto;
-        }
-        section span {
-            color: coral;
-            
-        }
-        section h1::first-line{
-            color: coral;
-        }
-         h1 {
-            font-size: 48px;
-        }
-        #ICONS{
-            padding: 20px 0px;
-        }
-        hr{
-            background-color: coral;
-            height: 1px;
-            width: 100%;
-            border: none;
-        }
-        #COVER {
-            background-image: url("https://1.bp.blogspot.com/-bN3xU7f9g9c/YKnJJHhqkgI/AAAAAAAAASc/jK9ybIzJO_4pSaI1zGpiPrdDs4CkZYAmgCLcBGAsYHQ/s0/Pratikshya%2Bprofile%2Bpic.png");
-            width: 300px;
-            height: 300px;
-            background-position: center;
-            background-size: cover;
-            border-radius: 50%;
-            border: 1px solid coral;
-            animation-name: Glow;
-            animation-iteration-count: infinite;
-            animation-duration: 3s;
-        }
-        @media screen and (max-width:800px){
-            section {
-            min-height: 100vh;
-            display: grid;
-            gap: 20px;
-            grid-template-columns: auto ;
-        }
-        }
-        @keyframes Glow{
-            0%{
-                box-shadow: 0px 0px 0px 0px coral, 0px 0px 0px 0px #ff7f505f;
-            }
-            50%{
-                box-shadow: 0px 0px 0px 30px #ff7f507f, 0px 0px 0px 100px #ff7f505f;
-            }
-            100%{
-                box-shadow: 0px 0px 0px 100px transparent, 0px 0px 0px 300px transparent;
-            }
-        }
-    </style>
+    ::-webkit-scrollbar-thumb {
+      border-radius: 100px;
+      background: #ffffff7f;
+    }
+
+    html {
+      scroll-behavior: smooth;
+
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      letter-spacing: 1.7px;
+      word-spacing: 5px;
+      background-color: mediumpurple;
+
+    }
+
+    .all {
+      transition: .5s;
+      padding: 10px;
+      margin: 0;
+    }
+
+
+    .item {
+      max-width: 1000px;
+      margin: auto;
+      scroll-snap-align: start;
+      color: #fff;
+      transition: 1s;
+      display: grid;
+      min-height: 100vh;
+      place-content: center;
+    }
+
+    h1 {
+      font-family: 'Secular One';
+      font-size: 3.7em;
+      margin: 5px 0px;
+      text-shadow: 0px 2.5px 5px slateblue;
+    }
+
+    h2 {
+      margin: 5px 0px;
+      font-family: 'Secular One';
+      font-size: 2.5em;
+      opacity: .7;
+    }
+
+    p {
+      font-family: Nunito;
+      font-size: 18px;
+    }
+
+    header {
+      z-index: 4;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: fit-content;
+      width: 100%;
+      transition: 0.5s;
+      background-color: mediumpurple;
+      padding: 10px 0px;
+      display: block;
+      border-top: 1px solid #ffffff3f;
+    }
+
+    nav {
+      display: grid;
+      justify-content: space-between;
+      grid-auto-flow: column;
+      
+    }
+
+    header a {
+      font-weight: bold;
+      display: inline-block;
+      font-size: 1em;
+      text-decoration: none;
+      color: white;
+      padding: 10px;
+    }
+
+    .shape:nth-child(1) {
+      z-index: -1;
+      /* background-image:url('https://1.bp.blogspot.com/-Ofnz-XV12Gw/YQ06lmd5MRI/AAAAAAAAAHY/OhOKkvBfXAYX3d-kt6pj8I9LfWXGegZ7QCNcBGAsYHQ/s0/DSC_0026-1.JPG'); */
+      height: 100vh;
+      background-size: cover;
+      background-color: slateblue;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    .shape:nth-child(2) {
+      z-index: -2;
+      /* background-image:url('https://1.bp.blogspot.com/-Ofnz-XV12Gw/YQ06lmd5MRI/AAAAAAAAAHY/OhOKkvBfXAYX3d-kt6pj8I9LfWXGegZ7QCNcBGAsYHQ/s0/DSC_0026-1.JPG'); */
+      height: 100vh;
+      background-size: cover;
+      background-color: slateblue;
+      position: fixed;
+      top: 0;
+      right: 0;
+    }
+    @media screen and (min-width: 800px) {
+      .projects_container{
+      display: grid;
+      grid-template-columns:  auto auto auto auto;
+      gap: 10px;
+    }
+      nav .label {
+        display: block;
+      }
+
+      nav .material-icons {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+      .projects_container{
+      display: grid;
+      grid-template-columns:  auto auto;
+      gap: 10px;
+    }
+      h1 {
+      font-size: 3em;
+    }
+
+    h2 {
+      font-size: 2em;
+    }
+
+    p {
+      font-size: 16px;
+    }
+      nav .label {
+        display: none;
+      }
+
+      nav .material-icons {
+        display: block;
+      }
+    }
+    #contact a{
+      padding: 20px;
+      border-radius:5px;
+      text-decoration: none;
+      color: #ffffff;
+      display: block;
+      width: fit-content;background-color: #ffffff1f;
+    }
+    #contact a:hover{
+      background-color: #ffffff3f;
+    }
+    #projects a{
+      height: 200px;
+      padding: 20px;
+      border-radius:5px;
+      text-decoration: none;
+      color: #ffffff;
+      display: inline-block;      background-color: #ffffff1f;
+      width: fit-content;
+    }
+    #projects a:hover{
+      transform: rotateZ(55deg);
+      background-color: #ffffff3f;
+    }
+    .projects_container{
+      place-content: center;
+      margin: auto;
+      display: grid;
+      gap: 10px;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"
+    integrity="sha512-E378bwaeZf1nwXeJGIwTB58A5gPt5jFU3u6aTGja4ZdRFJeo/N/REKnBgNZOZlH6JdnOPO98vg2AnSGaNfCMFQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Rampart+One&family=Secular+One&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
-    <article>
-        <section>
-            <div id="ITEM">
-                <h1>Hi,<br />
-                    I'am <span>
-                        Pratikshya
-                    </span><br />
-                    Web Designer
-                </h1>
-                <hr>
-                <div id="ICONS">
-                    <a class="material-icons" href="#">mail</a>
-                    <a class="material-icons" href="#">account_circle</a>
-                    <a class="material-icons" href="#">timeline</a>
-                <a class="material-icons" href="#">dashboard</a>
-                </div>
-                
-            </div>
-            <div id="ITEM">
-                <div id="COVER"></div>
-            </div>
-        </section>
-    </article>
+
+  <div class="shape"></div> 
+   <div class="shape"></div>
+  <div class="all">
+    <header id="header">
+      <nav>
+        <a title="Home" href="index.html"><span class="label">Pratikshya</span><span
+          class="material-icons">home</span></a>
+        <div>
+          <a title="About" href="#about"><span class="label">About</span><span
+              class="material-icons">account_circle</span></a>
+          <a title="Experience" href="#experience"><span class="label">Experience</span><span
+              class="material-icons">timeline</span></a>
+          <a title="Projects" href="#projects"><span class="label">Projects</span><span
+              class="material-icons">work</span></a>
+          <a title="Contact" href="#contact"><span class="label">Contact</span><span
+              class="material-icons">mail</span></a>
+        </div>
+      </nav>
+    </header>
+    <section class="item">
+
+      <div>
+        <h2>Hi, my name is</h2>
+        <h1 class="name">
+          Pratikshya Mohapatra.</h1>
+        <h2>I build things for the web.</h2>
+        <p>
+          I'm a software engineer specializing in building (and occasionally designing) exceptional digital experiences.
+        </p>
+      </div>
+    </section>
+    <section class="item " id="about">
+
+      <div>
+        <h2>About me</h2>
+        <p>
+          Hello! My name is Brittany and I enjoy creating things that live on the internet. My interest in web
+          development started back in 2012 when I decided to try editing custom Tumblr themes — turns out hacking
+          together a custom reblog button taught me a lot about HTML & CSS!
+
+          Fast-forward to today, and I've had the privilege of working at an advertising agency, a start-up, a huge
+          corporation, and a student-led design studio. My main focus these days is building accessible, inclusive
+          products and digital experiences at Upstatement for a variety of clients.
+
+          I also recently launched a course that covers everything you need to build a web app with the Spotify API
+          using Node & React.
+
+          Here are a few technologies I've been working with recently: </p>
+      </div>
+    </section>
+    <section class="item  " id="experience">
+
+      <div>
+        <h2>Experience</h2>
+        <p>
+          Hello! My name is Brittany and I enjoy creating things that live on the internet. My interest in web
+          development started back in 2012 when I decided to try editing custom Tumblr themes — turns out hacking
+          together a custom reblog button taught me a lot about HTML & CSS!
+
+          Fast-forward to today, and I've had the privilege of working at an advertising agency, a start-up, a huge
+          corporation, and a student-led design studio. My main focus these days is building accessible, inclusive
+          products and digital experiences at Upstatement for a variety of clients.
+
+          I also recently launched a course that covers everything you need to build a web app with the Spotify API
+          using Node & React.
+
+          Here are a few technologies I've been working with recently: </p>
+      </div>
+    </section>
+    <section class="item  " id="projects">
+      <div>
+        <h2>I’ve Built</h2><p>These are some of my projects from past and future. I hope these works can represent myself in behalf of me.</p>
+<div class="projects_container">
+  <a href="">
+    <h2>After Health</h2>
+  </a> <a href="">
+   <h2>After Health</h2>
+ </a> <a href="">
+   <h2>After Health</h2>
+ </a> <a href="">
+  <h2>After Health</h2>
+</a>
+</div>
+       
+      </div>
+    </section>
+    <section class="item  " id="contact">
+
+      <div>
+        <h2>Get In Touch</h2>
+        <p >
+          I'm currently looking for new oppertunities, my inbox is always open. Weather you have a question or offer for me, I'll try my best to get back to you!</p>
+          <a href="mailto:pratikshyamohapatra326@gmail.com">Say Hello</a>
+        </div>
+    </section>
+  </div>
+  <script>
+    let all = anime({
+      targets: 'h1,h2, p, a',
+      scale: [0, 1],
+      easing: 'linear',
+      duration: function () {
+        return anime.random(0, 1000);
+      },
+      delay: anime.stagger(100)
+    });
+  </script>
+  <script>
+    let onlyh2 = anime({
+      targets: 'h2 ',
+      easing: 'linear',
+
+      opacity: [0, .7],
+      duration: 500,
+      delay: anime.stagger(100)
+    });
+  </script>
+  <script>
+    const divAnimation = anime({
+      targets: '.shape',
+      autoplay: true,
+
+      width: '100%',
+      elasticity: 500,
+      duration: 2500,
+      easing: 'easeOutQuad',
+       delay: anime.stagger(1000),
+      opacity: [1, 0],
+    });
+
+    const scrollPercent = () => {
+      const bodyST = document.body.scrollTop;
+      const docST = document.documentElement.scrollTop;
+      const docSH = document.documentElement.scrollHeight;
+      const docCH = document.documentElement.clientHeight;
+
+
+      return (docST + bodyST) / (docSH - docCH) * 100
+    }
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = () => {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("header").style.bottom = "0";
+      }
+
+      else if (prevScrollpos < currentScrollPos) {
+        document.getElementById("header").style.bottom = "-100px";
+      }
+      prevScrollpos = currentScrollPos;
+      divAnimation.seek((scrollPercent() / 100) * divAnimation.duration);
+    };
+  </script>
 </body>
 
 </html>
