@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     ::-webkit-scrollbar {
-      width: 7px;
+      width: 5px;
+      height: 5px;
     }
 
     ::-webkit-scrollbar-track {
@@ -14,7 +15,7 @@
 
     ::-webkit-scrollbar-thumb {
       border-radius: 100px;
-      background: #ffffff7f;
+      background: orangered;
     }
 
     html {
@@ -27,38 +28,36 @@
       padding: 0;
       letter-spacing: 1.7px;
       word-spacing: 5px;
-      background-color: mediumpurple;
+      background-color: #f7f7f7;
 
     }
 
     .all {
       transition: .5s;
-      padding: 10px;
+      padding: 0;
       margin: 0;
     }
 
 
     .item {
+      padding: 10px;
       max-width: 1000px;
-      margin: auto;
+      margin: 100px auto;
       scroll-snap-align: start;
       color: #fff;
       transition: 1s;
       display: grid;
-      min-height: 100vh;
       place-content: center;
     }
-.item:nth-child(1){
-  padding-top: 100px;
-}
+
     h1 {
       font-family: 'Secular One';
       font-size: 3.7em;
       margin: 5px 0px;
-      text-shadow: 0px 2.5px 5px slateblue;
     }
 
     h2 {
+      color: #333;
       margin: 5px 0px;
       font-family: 'Secular One';
       font-size: 2.5em;
@@ -66,29 +65,26 @@
     }
 
     p {
+      color: #333;
       font-family: Nunito;
       font-size: 18px;
     }
 
     header {
-      z-index: 4;
-      position: fixed;
+      z-index: 5;
+      box-shadow: 0px 5px 15px #ccc;
+      position: sticky;
       top: 0;
-      left: 0;
-      height: fit-content;
+      background-color: #f5f5f5;
+      height: min-content;
       width: 100%;
       transition: 0.5s;
-      background-color: mediumpurple;
       padding: 10px 0px;
-      display: block;
-      border-bottom: 1px solid #ffffff3f;
-    }
-
-    nav {padding: 0px 10px;
       display: grid;
+      left: 0;
       justify-content: space-between;
-      grid-auto-flow: column;
-      
+      align-items: center;
+      grid-template-columns: auto auto;
     }
 
     header a {
@@ -96,106 +92,159 @@
       display: inline-block;
       font-size: 1em;
       text-decoration: none;
-      color: white;
+      color: orangered;
       padding: 10px;
     }
 
-    .shape:nth-child(1) {
-      z-index: -1;
-      /* background-image:url('https://1.bp.blogspot.com/-Ofnz-XV12Gw/YQ06lmd5MRI/AAAAAAAAAHY/OhOKkvBfXAYX3d-kt6pj8I9LfWXGegZ7QCNcBGAsYHQ/s0/DSC_0026-1.JPG'); */
-      height: 100vh;
-      background-size: cover;
-      background-color: slateblue;
+    #openGlance, #closeGlance {
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      color: orangered;
+    }
+
+    #Glance {
+min-width: 200px;
+      transform: scale(0);
       position: fixed;
+      right: 10px;
+      transition: .3s;
+      top: 10px;
+      background-color: #f7f7f7;
+      border-radius: 5px;
+      box-shadow: 0px 5px 15px #aaa;
+    }
+
+    #Glance a {
+      color: #555;
+      display: grid;
+      grid-auto-flow: column;
+      gap: 10px;
+      justify-content: start;
+      align-items: center;
+    }
+
+    #Glance a:hover {
+background-color: #ff45001f;
+      color: orangered;
+    }
+
+    #closeGlance {
+      background-color: #5555555f;
       top: 0;
       left: 0;
-    }
-    .shape:nth-child(2) {
-      z-index: -2;
-      /* background-image:url('https://1.bp.blogspot.com/-Ofnz-XV12Gw/YQ06lmd5MRI/AAAAAAAAAHY/OhOKkvBfXAYX3d-kt6pj8I9LfWXGegZ7QCNcBGAsYHQ/s0/DSC_0026-1.JPG'); */
       height: 100vh;
-      background-size: cover;
-      background-color: slateblue;
+      width: 100vw;
       position: fixed;
-      top: 0;
-      right: 0;
+      display: none;
     }
-    @media screen and (min-width: 800px) {
-      .projects_container{
-      display: grid;
-      grid-template-columns:  auto auto auto ;
-      gap: 10px;
-    }
-      nav .label {
-        display: block;
-      }
+ 
+    .shape {
+      height: 3px;
+      width: 0;
+      background-image: linear-gradient(90deg, transparent, orangered);
+      z-index: 7;
+      /* background-image:url('https://1.bp.blogspot.com/-Ofnz-XV12Gw/YQ06lmd5MRI/AAAAAAAAAHY/OhOKkvBfXAYX3d-kt6pj8I9LfWXGegZ7QCNcBGAsYHQ/s0/DSC_0026-1.JPG'); */
+      position: fixed;
+      top: 0px;
 
-      nav .material-icons {
-        display: none;
-      }
     }
 
-    @media screen and (max-width: 800px) {
-      .projects_container{
-      display: grid;
-      grid-template-columns:  auto auto;
-      gap: 10px;
-    }
-      h1 {
-      font-size: 3em;
+    .profileimg_container {
+      height: 130px;
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      border-radius: 5px 5px 0px 0px;
+      background-image: url('https://1.bp.blogspot.com/-Ofnz-XV12Gw/YQ06lmd5MRI/AAAAAAAAAHY/OhOKkvBfXAYX3d-kt6pj8I9LfWXGegZ7QCNcBGAsYHQ/s0/DSC_0026-1.JPG');
+
     }
 
-    h2 {
-      font-size: 2em;
-    }
-
-    p {
-      font-size: 16px;
-    }
-      nav .label {
-        display: none;
-      }
-
-      nav .material-icons {
-        display: block;
-      }
-    }
-    @media screen and (max-width: 500px) {
-      .projects_container{
-      display: grid;
-      grid-template-columns:  auto  ;
-      gap: 10px;
-    }
-  }
-    #contact a{
+    #contact a {
       padding: 20px;
-      border-radius:5px;
+      border-radius: 5px;
       text-decoration: none;
-      color: #ffffff;
+      color: #ff4500;
       display: block;
-      width: fit-content;background-color: #ffffff1f;
-    }
-    #contact a:hover{
-      background-color: #ffffff3f;
-    }
-    #projects a{
-      height: 200px;
-      padding: 20px;
-      border-radius:5px;
-      text-decoration: none;
-      color: #ffffff;
-      display: inline-block;      background-color: #ffffff1f;
       width: fit-content;
+      border: 1px solid #ff4500;
     }
-    #projects a:hover{
-      transform: rotateZ(55deg);
-      background-color: #ffffff3f;
+
+    #contact a:hover {
+      background-color: orangered;
+      color: #fff;
     }
-    .projects_container{
-      place-content: center;
-      margin: auto;
+     
+    #projects a {
+      box-sizing: border-box;
       display: grid;
+      grid-template-columns: 35% auto;
       gap: 10px;
+      transition: .3s;
+      opacity: .7; 
+      border-radius: 5px;
+      text-decoration: none;
+      color: orangered;
+      background-color: #ffffff;
+      box-shadow: 0px 5px 15px #999;
+      width: 100%;
+    }
+
+    #projects a:hover {
+      box-shadow: 0px 5px 15px #777;
+       opacity: 1;
+
+      }
+
+    .projects_container {padding: 0;
+      margin: auto;
+      padding: 10px;
+       max-width: 1000px;
+       grid-template-columns: auto auto;
+       gap: 10px;
+      display: grid;
+     } 
+    @media screen and (min-width:800px) {
+      .projects_container {
+        grid-template-columns: auto auto;
+      }
+     
+    } 
+    @media screen and (max-width:800px) {
+      .projects_container {
+        grid-template-columns: auto;
+      }
+      h1 {
+       font-size: 2.7em;
+     }
+
+    h2 { 
+      font-size:1.5em;
+     }
+
+    p { 
+      font-size: 18px;
+    }
+    } 
+    .Neumorphism{
+      border-radius: 5px 0px 0px 5px;
+       background-image: linear-gradient(-90deg, white, transparent 15px), url("https://assets.justinmind.com/wp-content/uploads/2020/04/neumorphism-ui-design.png");
+       background-size: cover; background-position: center;
+    }
+    .Material{ border-radius: 5px 0px 0px 5px;
+       background-image: linear-gradient(-90deg, white, transparent 15px), url("https://themewagon.com/wp-content/uploads/2018/02/Material-Admin-Free-Material-Admin-Template.jpg");
+       background-size: cover;
+      background-position: center;
+    }
+    .Glass{ border-radius: 5px 0px 0px 5px;
+       background-image:  linear-gradient(-90deg, white, transparent 15px), url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4Qz3hFIOI7LLZDhy-VTPWiPjUFweroHd_lQ&usqp=CAU");
+       background-size: cover;
+      background-position: center;
+    }
+    .Flat{ border-radius: 5px 0px 0px 5px;
+       background-image:  linear-gradient(-90deg, white, transparent 15px), url("https://cdn.freebiesupply.com/images/large/1x/flat-ui-kit-design-u27.png");
+       background-size: cover;
+      background-position: center;
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"
@@ -210,110 +259,139 @@
 </head>
 
 <body>
+  <div class="shape"></div>
 
-  <div class="shape"></div> 
-   <div class="shape"></div>
   <div class="all">
     <header id="header">
-      <nav>
-        <a title="Home" href="index.html"><span class="label">Pratikshya</span><span
-          class="material-icons">home</span></a>
-        <div>
-          <a title="About" href="#about"><span class="label">About</span><span
-              class="material-icons">account_circle</span></a>
-          <a title="Experience" href="#experience"><span class="label">Experience</span><span
-              class="material-icons">timeline</span></a>
-          <a title="Projects" href="#projects"><span class="label">Projects</span><span
-              class="material-icons">work</span></a>
-          <a title="Contact" href="#contact"><span class="label">Contact</span><span
-              class="material-icons">mail</span></a>
+      <a title="Home" href="index.html">Pratikshya</a>
+      <div>
+        <button id="openGlance" onclick="openGlance()"><span class="material-icons"> more_vert </span> </button>
+        <button id="closeGlance" onclick="closeGlance()"></button>
+        <div id="Glance">
+          <div class="profileimg_container"></div>
+          <a  onclick="closeGlance()" href="#about"> <span class="material-icons">person</span>About</a>
+           <a  onclick="closeGlance()" href="#experience"> <span class="material-icons">timeline</span>Experience</a> 
+              <a  onclick="closeGlance()" href="#projects"> <span
+              class="material-icons">work</span>Projects</a> 
+              <a  onclick="closeGlance()" href="#contact"> <span
+              class="material-icons">sms</span>Contact</a>
         </div>
-      </nav>
+      </div>
     </header>
-    <section class="item">
-
+    <section class="item" id="intro">
       <div>
         <h2>Hi, my name is</h2>
-        <h1 class="name">Pratikshya Mohapatra.</h1>
+        <h1 class="name">
+          <span style="color: orangered;">Pratikshya</span>
+          <span style="color: #333;">Mohapatra</span>
+          <span style="color: orangered;">.</span>
+        </h1>
         <h2>I build things for the web.</h2>
         <p>
-          I'm a software engineer specializing in building (and occasionally designing) exceptional digital experiences.
+          I'm a software engineer specializing in building and designing exceptional digital experiences.
         </p>
       </div>
     </section>
-    <section class="item " id="about">
+    <section class="item" id="about">
 
       <div>
         <h2>About me</h2>
         <p>
-          Hello! My name is Brittany and I enjoy creating things that live on the internet. My interest in web
-          development started back in 2012 when I decided to try editing custom Tumblr themes — turns out hacking
-          together a custom reblog button taught me a lot about HTML & CSS!
-
-          Fast-forward to today, and I've had the privilege of working at an advertising agency, a start-up, a huge
-          corporation, and a student-led design studio. My main focus these days is building accessible, inclusive
+          Hello! My name is Pratikshya Mohapatra and I enjoy creating things that live on the internet.
+          My interest in web development started back in 2020 when I tried to make a simple personal blog.
+        </p>
+        <p> Fast-forward to today, and I've had the privilege of working as a freelancer. My main focus these days is
+          building accessible, inclusive
           products and digital experiences at Upstatement for a variety of clients.
 
-          I also recently launched a course that covers everything you need to build a web app with the Spotify API
-          using Node & React.
-
-          Here are a few technologies I've been working with recently: </p>
+        </p>
+        <p>
+          I also recently launched my own android application which helps to learn new technologies.
+        </p>
+        <p>Here are a few technologies I've been working with recently: <b>Material-UI</b>, <b>Flutter</b>, <b>Anime.js</b>, <b>Animate.css</b>,
+          <b>React</b>, <b>Bootstrap</b> etc.</p>
       </div>
     </section>
-    <section class="item  " id="experience">
+    <section class="item" id="experience">
 
       <div>
         <h2>Experience</h2>
         <p>Worked on my own projects and some of then are listed below. Still looking for oppertunities to start. </p>
       </div>
     </section>
-    <section class="item  " id="projects">
+    <section class="item" id="projects">
       <div>
-        <h2>I’ve Built</h2><p>These are some of my projects from past and future. I hope these works can represent myself in behalf of me.</p>
-<div class="projects_container">
-  <a href="">
-    <h2>After Health</h2>
-  </a> <a href="">
-   <h2>After Health</h2>
- </a> <a href="">
-   <h2>After Health</h2>
- </a> <a href="">
-  <h2>After Health</h2>
-</a> </a> <a href="">
-  <h2>After Health</h2>
-</a> </a> <a href="">
-  <h2>After Health</h2>
-</a>
-</div>
-       
+        <h2>I’ve Built</h2>
+        <p>These are some of my projects from past and future. I hope these works can represent myself in behalf of me.
+        </p>
+        <div class="projects_container">
+          <a href="" >
+            <div class="Neumorphism">
+
+            </div>
+            <div>
+              <h3>Neumorphism UI</h3>
+              <p>This showcase is based on neumorphism ui and i tried to make it in my way and gave my unique touch.</p>
+            </div>
+          </a>
+          <a href="" class="">
+            <div class="Material">
+
+            </div>
+            <div>
+              <h3>Material UI</h3>
+              <p>This showcase is based on neumorphism ui and i tried to make it in my way and gave my unique touch.</p>
+            </div>
+          </a>
+          <a href="" class="">
+            <div class="Glass">
+
+            </div>
+            <div>
+              <h3>Glassmorphism UI</h3>
+              <p>This showcase is based on neumorphism ui and i tried to make it in my way and gave my unique touch.</p>
+            </div>
+          </a>
+          <a href="" class="">
+            <div class="Flat">
+
+            </div>
+            <div>
+              <h3>Flat UI</h3>
+              <p>This showcase is based on Flat ui and my unique touch.</p>
+            </div>
+          </a> 
+         </div>
+
       </div>
     </section>
-    <section class="item  " id="contact">
+    <section class="item" id="contact">
 
       <div>
         <h2>Get In Touch</h2>
-        <p >
-          I'm currently looking for new oppertunities, my inbox is always open. Weather you have a question or offer for me, I'll try my best to get back to you!</p>
-          <a href="mailto:pratikshyamohapatra326@gmail.com">Say Hello</a>
-        </div>
+        <p>
+          I'm currently looking for new oppertunities, my inbox is always open. Weather you have a question or offer for
+          me, I'll try my best to get back to you!</p>
+        <a href="mailto:pratikshyamohapatra326@gmail.com">Say Hello</a>
+      </div>
     </section>
   </div>
+
   <script>
     let all = anime({
       targets: 'h1,h2, p, a',
       scale: [0, 1],
       easing: 'linear',
       duration: function () {
-        return anime.random(0, 1000);
+        return anime.random(0, 500);
       },
-      delay: anime.stagger(100)
+      delay: anime.stagger(50)
     });
   </script>
   <script>
     let onlyh2 = anime({
       targets: 'h2 ',
       easing: 'linear',
-
       opacity: [0, .7],
       duration: 500,
       delay: anime.stagger(100)
@@ -321,15 +399,10 @@
   </script>
   <script>
     const divAnimation = anime({
-      targets: '.shape',
-      autoplay: true,
-
+      targets: '.shape', autoplay: false,
       width: '100%',
-      elasticity: 500,
-      duration: 2500,
-      easing: 'easeOutQuad',
-       delay: anime.stagger(1000),
-      opacity: [1, 0],
+
+      easing: 'linear',
     });
 
     const scrollPercent = () => {
@@ -354,6 +427,18 @@
       prevScrollpos = currentScrollPos;
       divAnimation.seek((scrollPercent() / 100) * divAnimation.duration);
     };
+  </script>
+  <script>
+
+    function openGlance() {
+      document.getElementById("Glance").style.transform = "scale(1)";
+      document.getElementById("closeGlance").style.display = "block";
+    }
+
+    function closeGlance() {
+      document.getElementById("Glance").style.transform = "scale(0)";
+      document.getElementById("closeGlance").style.display = "none";
+    }
   </script>
 </body>
 
